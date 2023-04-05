@@ -2,20 +2,20 @@ import React, { useState } from "react";
 import "../App.css";
 import { NavLink } from 'react-router-dom';
 
-function Home({ contacts, activeContact, setActiveContact , setContacts ,editedContact,setEditedContact}) {  
+function Home({ contacts, activeContact, setActiveContact , setContacts }) {  
 
   const click = (id) => {
     setActiveContact(id);
-    setEditedContact(contacts.find((contact) => contact.id === id));
   };
 
   const handleDelete = () => {
     const updatedContacts = contacts.filter(
-      (contact) => contact.id !== editedContact.id
+      (contact) => contact.id !== activeContact
     );
     setContacts(updatedContacts);
-    setEditedContact(null);
+    setActiveContact(null);
   };
+  const url = "/EditContacts";
   return (
     <>
       <div className="home-heading">Contact List:</div>
@@ -55,12 +55,12 @@ function Home({ contacts, activeContact, setActiveContact , setContacts ,editedC
                         </div>
                       </td>
                       <td>
-                      {editedContact && (contact.id === editedContact.id && (
+                      {contact.id === activeContact && (
                   <div>
                     
-                    <button ><NavLink to="/EditContacts" style={{color:'lightgreen',textDecoration:'none'}} >Edit</NavLink></button>
+                    <button ><NavLink to={url+'/'+activeContact} style={{color:'lightgreen',textDecoration:'none'}} >Edit</NavLink></button>
                   </div>
-                ))}
+                )}
                       </td>
                     </tr>
                     <tr>
@@ -83,7 +83,7 @@ function Home({ contacts, activeContact, setActiveContact , setContacts ,editedC
                         </div>
                       </td>
                       <td>
-                      {editedContact && (contact.id === editedContact.id && (
+                      {contact.id === activeContact && (
                   <div>
                     
                     <button style={{color:'crimson'}}
@@ -93,7 +93,7 @@ function Home({ contacts, activeContact, setActiveContact , setContacts ,editedC
                       Delete
                     </button>
                   </div>
-                ))}
+                )}
                       </td>
                     </tr>
                     

@@ -1,8 +1,15 @@
 import '../App.css';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useState,useEffect } from 'react';
 
-const EditContacts = ({ editedContact,setEditedContact, contacts, setActiveContact, setContacts }) => {
+const EditContacts = ({ contacts, setActiveContact, setContacts }) => {
+  useEffect(() => {
+    setActiveContact(null);
+  }, []);
+  const { id } = useParams();
+  const [editedContact, setEditedContact] = useState(contacts.find((contact) => contact.id === id));
+  
   const navigate = useNavigate();
   let flag = 7;
     
@@ -19,20 +26,27 @@ const EditContacts = ({ editedContact,setEditedContact, contacts, setActiveConta
     (iPass === editedContact.pass ? (flag = 6) : (flag = 7))
   };
   const confirmPass = () => {
-    (flag == 6 ? handleSave() : window.alert("Passowrd Doesn't Match"))
+    (flag == 6 ? handleSave() : passError())
+  };
+  const passError = () => {
+    document.getElementById("ePass").style.display = "block";
   };
   
   const handleSave = () => {
     const updatedContacts = contacts.map((contact) =>
       contact.id === editedContact.id ? editedContact : contact
-      );
+    );
     setContacts(updatedContacts);
     setEditedContact(null);
     setActiveContact(null);
     navigate('/');
   };
-    return (<>
-        <div className="home-heading">Contact Editor:</div>
+  return (<>
+    {typeof editedContact === 'undefined' ? (
+      <div className="home-heading" >No Contacts Found</div>
+    ) : (
+      <div>
+        <div  className="home-heading" >Contact Editor:</div>
         <div className="active-contact-container">
               <div className="active-contact-input-container">
                     <table className="table-edit">
@@ -78,7 +92,8 @@ const EditContacts = ({ editedContact,setEditedContact, contacts, setActiveConta
                     type="password"
                 name="inputPass"
                 onChange={matchPass}
-                  /></td>
+              /></td>
+              <td><div  id="ePass" className="error-text" style={{display:'none'}}>Password does not match!</div></td>
             </tr>
             
                     <tr>
@@ -90,7 +105,8 @@ const EditContacts = ({ editedContact,setEditedContact, contacts, setActiveConta
                   
               </div>
             </div>
-        
+      </div>
+    )}
     </>    
     );
 };

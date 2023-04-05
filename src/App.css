@@ -87,3 +87,7 @@ button {
 button:hover {
   color: #04c;
 }
+.error-text{
+  color:red;
+  padding-left: 20px;
+}

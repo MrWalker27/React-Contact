@@ -3,13 +3,15 @@ import { NavLink, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import AddContacts from "./components/AddContacts";
 import EditContacts from "./components/EditContacts";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import uuid from "react-uuid";
 
 function App() {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(JSON.parse(localStorage.contacts) || []);
+  useEffect(() => {
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+  },[contacts]);
   const [activeContact, setActiveContact] = useState([false]);
-  const [editedContact, setEditedContact] = useState();
   const onAddContact = (iname, iphone, iemail, iage, ipass) => {
     const newContact = {
       id: uuid(),
@@ -20,6 +22,7 @@ function App() {
       pass: ipass,
     };
     setContacts([newContact, ...contacts]);
+    console.log(contacts);
   };
   return (
     <>
@@ -40,8 +43,6 @@ function App() {
               setContacts={setContacts}
               activeContact={activeContact}
               setActiveContact={setActiveContact}
-              editedContact={editedContact}
-              setEditedContact={setEditedContact}
             />
           }
         />
@@ -51,16 +52,13 @@ function App() {
             <AddContacts
               onAddContact={onAddContact}
               setActiveContact={setActiveContact}
-              setEditedContact={setEditedContact}
             />
           }
         />
         <Route
-          path="/EditContacts"
+          path="/EditContacts/:id"
           element={
             <EditContacts
-              editedContact={editedContact}
-              setEditedContact={setEditedContact}
               contacts={contacts}
               setContacts={setContacts}
               setActiveContact={setActiveContact}
