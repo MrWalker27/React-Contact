@@ -1,7 +1,8 @@
 import '../App.css';
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 
 const EditContacts = ({ contacts, setActiveContact, setContacts }) => {
   useEffect(() => {
@@ -43,7 +44,7 @@ const EditContacts = ({ contacts, setActiveContact, setContacts }) => {
   };
   return (<>
     {typeof editedContact === 'undefined' ? (
-      <div className="home-heading" >No Contacts Found</div>
+      <Navigate to="/InvalidPage"/>
     ) : (
       <div>
         <div  className="home-heading" >Contact Editor:</div>

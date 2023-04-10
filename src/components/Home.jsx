@@ -58,7 +58,7 @@ function Home({ contacts, activeContact, setActiveContact , setContacts }) {
                       {contact.id === activeContact && (
                   <div>
                     
-                    <button ><NavLink to={url+'/'+activeContact} style={{color:'lightgreen',textDecoration:'none'}} >Edit</NavLink></button>
+                    <button className="buttono"><NavLink to={url+'/'+activeContact} style={{color:'lightgreen',textDecoration:'none'}} >Edit</NavLink></button>
                   </div>
                 )}
                       </td>
@@ -86,7 +86,31 @@ function Home({ contacts, activeContact, setActiveContact , setContacts }) {
                       {contact.id === activeContact && (
                   <div>
                     
-                    <button style={{color:'crimson'}}
+                    <button className="buttono" style={{color:'crimson'}}
+                      id="delete_button"
+                      onClick={handleDelete}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                )}
+                      </td>
+                    </tr>
+                    <tr className="buttonn">
+                    <td>
+                      {contact.id === activeContact && (
+                  <div>
+                    
+                    <button ><NavLink to={url+'/'+activeContact} style={{color:'lightgreen',textDecoration:'none'}} >Edit</NavLink></button>
+                  </div>
+                )}
+                      </td>
+                      <td></td><td></td>
+                      <td>
+                      {contact.id === activeContact && (
+                  <div>
+                    
+                    <button  style={{color:'crimson',paddingLeft:'0px'}}
                       id="delete_button"
                       onClick={handleDelete}
                     >

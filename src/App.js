@@ -5,6 +5,7 @@ import AddContacts from "./components/AddContacts";
 import EditContacts from "./components/EditContacts";
 import { useEffect, useState } from "react";
 import uuid from "react-uuid";
+import InvalidPage from "./components/InvalidPage";
 
 function App() {
   const [contacts, setContacts] = useState(JSON.parse(localStorage.contacts) || []);
@@ -22,11 +23,10 @@ function App() {
       pass: ipass,
     };
     setContacts([newContact, ...contacts]);
-    console.log(contacts);
   };
   return (
     <>
-      <nav className="navigation">
+      <nav className="navigation" >
         <NavLink to="/" className="links">
           Home
         </NavLink>
@@ -62,6 +62,13 @@ function App() {
               contacts={contacts}
               setContacts={setContacts}
               setActiveContact={setActiveContact}
+            />
+          }
+        />
+        <Route
+          path="/InvalidPage"
+          element={
+            <InvalidPage
             />
           }
         />

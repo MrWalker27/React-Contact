@@ -61,47 +61,67 @@ const AddContacts = ({ onAddContact, setActiveContact }) => {
         setCPass('');
     };
     return (<>
-        <div className="addContacts-main">
-            <table>
+        <div className="addContacts-main" >
+            <table className='addContacts-table'>
                 <tr>
                     <td><div  className='contacts-heading' style={{marginTop: '15px'}}>Name:</div></td>
-                    <td><input type="text" value={name} style={{ marginTop: '15px' }} onChange={(e) => setName(e.target.value)} /></td>
-                    <td><div id="eName" className="error-text" style={{ marginTop: '10px', display: 'none' }}>Name cannot be left empty</div></td>
-                    <td><div  id="eVName" className="error-text" style={{marginTop: '10px',display:'none'}}>Please enter a valid Name</div></td>
+                    <td><input type="text" value={name} className='inputW' style={{ marginTop: '15px'}} onChange={(e) => setName(e.target.value)} /></td>
+                </tr>
+                <tr >
+                    <td className='hint-text'>(only Alphabets)</td>
+                    <td id="eName" className="error-text" style={{ display: 'none' }}>Name cannot be left empty</td>
+                    <td id="eVName" className="error-text" style={{display:'none'}}>Please enter a valid Name</td>
                 </tr>
                 <tr>
                     <td><div className='contacts-heading'>Phone:</div></td>
-                    <td> <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} /></td>
-                    <td><div id="ePhone" className="error-text" style={{ display: 'none' }}>Phone cannot be left empty</div></td>
-                    <td><div id="eVPhone" className="error-text" style={{display:'none'}}>Please enter a valid Phone number</div></td>
+                    <td> <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} className='inputW' /></td>
+                </tr>
+                <tr >
+                    <td className='hint-text'>(only 10 digit numbers)</td>
+                    <td id="ePhone" className="error-text" style={{ display: 'none' }}>Phone cannot be left empty</td>
+                    <td id="eVPhone" className="error-text" style={{display:'none'}}>Please enter a valid Phone number</td>
                 </tr>
                 <tr>
                     <td><div className='contacts-heading'>Email:</div></td>
-                    <td><input type="text" value={email} onChange={(e) => setEmail(e.target.value)} /></td>
-                    <td><div id="eEmail" className="error-text" style={{ display: 'none' }}>Email cannot be left empty</div></td>
-                    <td><div id="eVEmail" className="error-text" style={{display:'none'}}>Please enter a valid Email</div></td>
+                    <td><input type="text" value={email} onChange={(e) => setEmail(e.target.value)} className='inputW'/></td>
+                </tr>
+                <tr >
+                    <td className='hint-text'>(...@...)</td>
+                    <td id="eEmail" className="error-text" style={{ display: 'none' }}>Email cannot be left empty</td>
+                    <td id="eVEmail" className="error-text" style={{display:'none'}}>Please enter a valid Email</td>
                 </tr>
                 <tr>
                     <td><div className='contacts-heading'>Age:</div></td>
-                    <td><input type="number" value={age} onChange={(e) => setAge(e.target.value)} /></td>
-                    <td><div id="eAge" className="error-text" style={{ display: 'none' }}>Age cannot be left empty</div></td>
-                    <td><div id="eVAge" className="error-text" style={{display:'none'}}>Age has to be greater than 18</div></td>
+                    <td><input type="number" value={age} onChange={(e) => setAge(e.target.value)} className='inputW'/></td>
+                </tr>
+                
+                <tr >
+                    <td className='hint-text'>(age in years)</td>
+                    <td id="eAge" className="error-text" style={{ display: 'none' }}>Age cannot be left empty</td>
+                    <td id="eVAge" className="error-text" style={{display:'none'}}>Age has to be greater than 18</td>
                 </tr>
                 <tr>
                     <td><div className='contacts-heading'>Password:</div></td>
-                    <td><input type="password" value={pass} onChange={(e) => setPass(e.target.value)} /></td>
-                    <td><div id="ePass" className="error-text" style={{ display: 'none' }}>Password cannot be left empty</div></td>
-                    <td><div id="eVPass" className="error-text" style={{display:'none'}}>Password must be of atleast length 6 and must contain an alphabet and a number</div></td>
+                    <td><input type="password" value={pass} onChange={(e) => setPass(e.target.value)} className='inputW'/></td>
+                </tr>
+                <tr >
+                    <td className='hint-text'>(minimum 6 digits)</td>
+                    <td id="ePass" className="error-text" style={{ display: 'none' }}>Password cannot be left empty</td>
+                    <td id="eVPass" className="error-text" style={{display:'none'}}>Minimum 1 number & alphabet</td>
                 </tr>
                 <tr>
                     <td><div className='contacts-heading'>Confirm Password:</div></td>
-                    <td><input type="password" value={cPass} onChange={(e) => setCPass(e.target.value)} /></td>
-                    <td><div id="eCPass" className="error-text" style={{ display: 'none' }}>Confirm Password cannot be left empty</div></td>
-                    <td><div id="eMPass" className="error-text" style={{display:'none'}}>Password doesn't match</div></td>
+                    <td><input type="password" value={cPass} onChange={(e) => setCPass(e.target.value)} className='inputW'/></td>
+                </tr>
+                
+                <tr >
+                    <td className='hint-text'>(Type password again)</td>
+                    <td id="eCPass" className="error-text" style={{ display: 'none' }}>Confirm Password cannot be left empty</td>
+                    <td id="eMPass" className="error-text" style={{display:'none'}}>Password doesn't match</td>
                 </tr>
                 <tr>
                     <td><div className='contacts-heading'></div></td>
-                    <button onClick={handleSave}>Save</button>
+                    <button onClick={handleSave} style={{marginBottom:'30px'}}>Save</button>
                 </tr>
                 </table>
         </div>  

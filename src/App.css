@@ -6,71 +6,72 @@ body,
   height: 100vh;
   overflow: hidden;
   font-size: 16px;
-  background-color:aliceblue
+  background-color: #f0f8ff;
 }
-.navigation{
+.navigation {
   width: 100%;
   height: 40px;
   /* background-color: aqua; */
   font-size: 25px;
   border-bottom: 2px solid black;
 }
-.links{
+.links {
   margin-right: 30px;
   text-decoration: none;
   color: rgb(62, 174, 211);
 }
-nav a.active{
+nav a.active {
   color: crimson;
 }
-.contacts-heading{
+.contacts-heading {
   font-size: 20px;
   width: 200px;
-  
 }
-tr{
+tr {
   height: 30px;
 }
-button{
+button {
   margin-top: 15px;
   float: right;
 }
-.home-heading{
+.home-heading {
   font-size: 25px;
   margin-top: 10px;
+  margin-left: 30px;
   font-weight: bold;
   margin-bottom: 10px;
 }
-.contacts-heading-display{
+.contacts-heading-display {
   font-size: 19px;
   width: 70px;
 }
-.contacts-content-display{
+.contacts-content-display {
   font-size: 15px;
   width: 220px;
 }
 .home-contacts {
+  margin-left: 50px;
   padding: 10px;
   cursor: pointer;
 }
 .home-contacts:hover {
   background: #ddd;
 }
-.home-contacts.active{
+.home-contacts.active {
   background: #0088cc;
   color: white;
 }
-.empty-list{
+.empty-list {
   font-size: 19px;
   padding-left: 30px;
 }
-.table-edit-heading{
+.table-edit-heading {
   width: 100px;
 }
-.table-edit{
+.table-edit {
   padding: 10px;
 }
-.delete-button{
+.delete-button {
   margin-top: 15px;
   float: left;
 }
@@ -87,7 +88,90 @@ button {
 button:hover {
   color: #04c;
 }
-.error-text{
-  color:red;
-  padding-left: 20px;
+.error-text {
+  color: rgb(218, 29, 29);
+}
+.hint-text {
+  color: rgb(94, 199, 94);
+}
+nav {
+  list-style: none;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.addContacts-main {
+  background-color: rgb(205, 224, 240, 0.8);
+  padding-top: 25px;
+  width: 33%;
+  margin: auto;
+  border-radius: 15px;
+  border: 1px black solid;
+}
+.addContacts-table {
+  margin: auto;
+}
+.invalidpage {
+  text-align: center;
+}
+
+.buttonn {
+  display: none;
+}
+.inputW {
+  width: 275px;
+}
+@media only screen and (max-width: 400px) {
+  .contacts-heading-display {
+    font-size: 19px;
+    width: 60px;
+  }
+  .contacts-content-display {
+    font-size: 15px;
+    width: 110px;
+  }
+  .home-heading {
+    font-size: 25px;
+    margin-top: 10px;
+    margin-left: 0px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .home-contacts {
+    margin-left: 0px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .addContacts-main {
+    background-color: rgb(205, 224, 240, 0.8);
+    padding-top: 25px;
+    width: 90%;
+    margin: auto;
+    border-radius: 15px;
+    border: 1px black solid;
+  }
+  .contacts-heading {
+    width: 100px;
+  }
+  .buttono {
+    display: none;
+  }
+  .buttonn {
+    display: block;
+  }
+  .contacts-heading-display {
+    font-size: 15px;
+    width: 50px;
+  }
+
+  .contacts-content-display {
+    font-size: 13px;
+    width: 80px;
+  }
+  .inputW {
+    width: 180px;
+  }
+  .hint-text {
+    color: rgb(94, 199, 94);
+    width: 110px;
+  }
 }
